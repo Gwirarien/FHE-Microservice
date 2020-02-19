@@ -3,3 +3,4 @@ flask_wtf
 wtform
 mysql-connector
 uwsgi
+flask-sqlalchemy
