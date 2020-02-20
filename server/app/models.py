@@ -15,9 +15,10 @@ class User(db.Model, UserMixin):
     data = db.relationship('Data', backref='author', lazy=True)
 
     def __repr__(self):
-        return f"User('{self.username}','{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class Data(db.Model):
+    __tablename__ = 'data'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     input = db.Column(db.Integer)
