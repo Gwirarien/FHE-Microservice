@@ -2,7 +2,15 @@
 {% block content %}
     {% if current_user.is_authenticated %}
         <a href="{{ url_for('calculate') }}">Click here to calculate</a>
+        {% if data.input_value1 != 0 and data.input_value2 != 0 %}
+            <!-- TODO: change this to show the decrypted output -->
+            <ul id="output-data">
+                <li>value1: {{ data.input_value1 }}</li>
+                <li>value2: {{ data.input_value2 }}</li>
+            </ul>
+        {% endif %}
     {% else %}
+        <!-- Anonymous calculation -->
         <form>
             <!-- Default input -->
             <div class="form-group">

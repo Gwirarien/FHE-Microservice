@@ -17,8 +17,7 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class Data(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, primary_key=True)
     input_value1 = db.Column(db.Integer)
     input_value2 = db.Column(db.Integer)
     public_key = db.Column(db.Integer)
@@ -26,4 +25,4 @@ class Data(db.Model):
     enc_solution_matrix = db.Column(db.Float)
 
     def __repr__(self):
-        return f"Post('{self.public_key}', '{self.enc_data_matrix}')"
+        return f"Data('{self.input_value1}', '{self.input_value2}', '{self.public_key}',  '{self.enc_data_matrix}')"
