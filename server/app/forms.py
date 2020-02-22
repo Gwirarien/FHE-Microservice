@@ -45,3 +45,8 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('That email is taken. Please choose a different one.')
+
+class CalculateForm(FlaskForm):
+    input_value1 = StringField('Input value 1', validators=[DataRequired()])
+    input_value2 = StringField('Input value 2', validators=[DataRequired()])
+    submit_values = SubmitField('Calculate!')

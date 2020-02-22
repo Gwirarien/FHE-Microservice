@@ -6,7 +6,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -18,13 +17,13 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class Data(db.Model):
-    __tablename__ = 'data'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    input = db.Column(db.Integer)
+    input_value1 = db.Column(db.Integer)
+    input_value2 = db.Column(db.Integer)
     public_key = db.Column(db.Integer)
     enc_data_matrix = db.Column(db.Float)
     enc_solution_matrix = db.Column(db.Float)
 
     def __repr__(self):
-        return f"Post('{self.public_key}', '{self.enc_data_matrix}', '{self.enc_solution_matrix}')"
+        return f"Post('{self.public_key}', '{self.enc_data_matrix}')"
