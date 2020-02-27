@@ -11,4 +11,8 @@ def home():
     data = 0
     if current_user.is_authenticated:
         data = db.session.query(Data).join(User).filter(User.id == current_user.id).first()
+
+        #print(data.input_value1)
+        #print(data.input_value2)
+
     return render_template('home.html', data=data)

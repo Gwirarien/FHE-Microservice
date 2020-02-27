@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User
 
@@ -47,6 +47,6 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError('That email is taken. Please choose a different one.')
 
 class CalculateForm(FlaskForm):
-    input_value1 = StringField('Input value 1', validators=[DataRequired()])
-    input_value2 = StringField('Input value 2', validators=[DataRequired()])
+    input_value1 = FloatField('Input value 1', validators=[DataRequired()])
+    input_value2 = FloatField('Input value 2', validators=[DataRequired()])
     submit_values = SubmitField('Calculate!')
