@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
     {% if current_user.is_authenticated %}
-        <a href="{{ url_for('calculate') }}">Click here to calculate</a>
+        <a href="{{ url_for('calculation.calculate') }}">Click here to calculate</a>
         <!-- TODO: change this to show the decrypted output -->
         <ul id="output-data">
-            <li>value1: {{ data.input_value1 }}</li>
-            <li>value1: {{ data.input_value2 }}</li>
+            <li>value 1: {{ data.input_value1 }}</li>
+            <li>value 2: {{ data.input_value2 }}</li>
         </ul>
     {% else %}
         <!-- Anonymous calculation -->

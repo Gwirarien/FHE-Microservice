@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from app.encryption_helper import EncryptionHelper
+from app.calculation.encryption_helper import EncryptionHelper
 
 class KeyGenerator:
 

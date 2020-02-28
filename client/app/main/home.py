@@ -1,12 +1,12 @@
-from app import app, db
+from app import db
 from flask import render_template
 from app.models import User, Data
 from flask_login import current_user
 from sqlalchemy.sql import text
-import sqlitis
+from app.main import main
 
-@app.route("/")
-@app.route("/home")
+@main.route("/")
+@main.route("/home")
 def home():
     data = 0
     if current_user.is_authenticated:

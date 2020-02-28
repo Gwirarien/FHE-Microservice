@@ -1,8 +1,8 @@
-from app import app
 from flask import url_for, redirect
 from flask_login import logout_user
+from app.users import users
 
-@app.route("/logout")
+@users.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('main.home'))

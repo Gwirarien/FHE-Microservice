@@ -1,5 +1,4 @@
 import numpy as np
-import sympy as sp
 import random
 from math import sqrt
 from itertools import count, islice

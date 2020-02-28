@@ -1,12 +1,9 @@
 import numpy as np
 import random
-from app.encryption_helper import EncryptionHelper
-from app.key_generator import KeyGenerator
+from app.calculation.encryption_helper import EncryptionHelper
+from app.calculation.key_generator import KeyGenerator
 
 class MatrixEncryption:
-
-    def __init(self):
-        a = np.full((2, 2), Quaternion(0, 0, 0, 0))
 
     def __convert_message(self, message):
         return EncryptionHelper.signed_modulo(message, EncryptionHelper.get_N_squared())

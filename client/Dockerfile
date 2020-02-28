@@ -14,6 +14,3 @@ RUN pip install -r requirements.txt
 
 # Runt the command to start uWSGI
 CMD [ "uwsgi", "app.ini" ]
-
-# Run app.py when the container launches
-# CMD python app/main.py

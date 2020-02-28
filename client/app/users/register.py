@@ -1,8 +1,9 @@
-from app import app, db, bcrypt
+from app import db, bcrypt
 from flask import render_template, url_for, flash, redirect
-from app.forms import RegistrationForm
-from app.models import User, Data
 from flask_login import current_user
+from app.users.forms import RegistrationForm
+from app.models import User, Data
+from app.users import users
 
 # TODO: delete/initialize params with column data type values
 def create_data_table(user):
@@ -10,10 +11,10 @@ def create_data_table(user):
     db.session.add(data)
     db.session.commit()
 
-@app.route("/register", methods=['GET', 'POST'])
+@users.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('main.home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -22,5 +23,5 @@ def register():
         db.session.commit()
         #create_data_table(user)
         flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('users.login'))
     return render_template('register.html', title='Register', form=form)

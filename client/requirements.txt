@@ -8,3 +8,5 @@ flask_bcrypt
 flask_login
 jinja2
 Pillow
+pyquaternion
+numpy
