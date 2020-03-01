@@ -9,5 +9,6 @@ flask_login
 jinja2
 Pillow
 pyquaternion
+jsonpickle
 requests
 numpy

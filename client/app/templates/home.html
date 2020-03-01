@@ -4,8 +4,9 @@
         <a href="{{ url_for('calculation.calculate') }}">Click here to calculate</a>
         <!-- TODO: change this to show the decrypted output -->
         <ul id="output-data">
-            <li>value 1: {{ data.input_value1 }}</li>
-            <li>value 2: {{ data.input_value2 }}</li>
+            <li>Input1: {{ data.input_value1}}</li>
+            <li>Input2: {{ data.input_value2}}</li>
+            <li>Output: {{ data.output_value}}</li>
         </ul>
     {% else %}
         <!-- Anonymous calculation -->

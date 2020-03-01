@@ -1,7 +1,6 @@
 from app import db, login_manager
 from flask_login import UserMixin
 import sqlalchemy.types as types
-from pyquaternion import Quaternion
 import numpy as np
 
 @login_manager.user_loader
@@ -19,11 +18,11 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
-# TODO: delete lines below
 class Data(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, primary_key=True)
-    input_value1 = db.Column(db.Integer)
-    input_value2 = db.Column(db.Integer)
+    input_value1 = db.Column(db.Float)
+    input_value2 = db.Column(db.Float)
+    output_value = db.Column(db.Float)
 
     def __repr__(self):
-        return f"Data('{self.input_value1}', '{self.input_value2}')"
+        return f"Data('{self.user_id}', '{self.input_value1}', '{self.input_value2}', '{self.output_value}')"

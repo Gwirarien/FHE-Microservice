@@ -1,18 +1,20 @@
 from flask import Flask, request
 import numpy as np
-import json
+import jsonpickle 
 
 app = Flask(__name__)
 
-def writeToJSONFile(path, fileName, data):
-    filePathNameWExt = './' + path + '/' + fileName + '.json'
-    with open(filePathNameWExt, 'w') as fp:
-        json.dump(data, fp)
-
 @app.route("/", methods=['GET', 'POST'])
 def process():      
-    received_data = json.loads(request.data)
+    # decode data
+    received_data = jsonpickle.decode(request.data)
+    received_data = jsonpickle.decode(received_data)
     
-    # save the json for debug purposes
-    writeToJSONFile('./', 'dummy', received_data)
-    return received_data
+    # perform computation
+    enc_input_value1 = received_data['enc_input_value1']
+    enc_input_value2 = received_data['enc_input_value2']
+    enc_output = {}
+    enc_output['enc_output_value'] = np.add(enc_input_value1, enc_input_value1)
+
+    # send back data as json
+    return jsonpickle.encode(enc_output)
