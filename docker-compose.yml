@@ -8,12 +8,21 @@ services:
     restart: always
     environment: 
       - APP_NAME=HE-Microservice-frontend
-    expose: 
-      - 8080
-
-  nginx:
-    build: ./nginx
-    container_name: nginx
+      - SECRET_KEY=random secret key
+      - SQLALCHEMY_DATABASE_URI=sqlite:///../../database/database.db
+    links:
+      - db
+    ports:
+      - 80:80
+    depends_on:
+      - server
+      
+  server:
+    build: ./server
+    container_name: server
     restart: always
-    ports: 
-      - "80:80"
+    environment: 
+      - APP_NAME=HE-Microservice-backend
+    ports:
+      - 81:81
+  

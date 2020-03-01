@@ -3,11 +3,7 @@ flask_wtf
 wtform
 mysql-connector
 uwsgi
-flask-sqlalchemy
-flask_bcrypt
-flask_login
 jinja2
-Pillow
 pyquaternion
 requests
 numpy
