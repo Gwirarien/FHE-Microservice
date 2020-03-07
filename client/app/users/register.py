@@ -2,7 +2,7 @@ from app import db, bcrypt
 from flask import render_template, url_for, flash, redirect
 from flask_login import current_user
 from app.users.forms import RegistrationForm
-from app.models import User, Data
+from app.models import User
 from app.users import users
 
 # TODO: delete/initialize params with column data type values
