@@ -9,9 +9,7 @@ services:
     environment: 
       - APP_NAME=HE-Microservice-frontend
       - SECRET_KEY=random secret key
-      - SQLALCHEMY_DATABASE_URI=sqlite:///../../database/database.db
-    links:
-      - db
+      - SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:admin@localhost:5432/database'
     ports:
       - 80:80
     depends_on:

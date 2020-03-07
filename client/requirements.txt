@@ -12,3 +12,4 @@ pyquaternion
 jsonpickle
 requests
 numpy
+psycopg2
