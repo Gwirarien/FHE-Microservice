@@ -1,8 +1,5 @@
 # FHE-Microservice
 
-**Nginx is currently disabled!**
-**The database cannot be accessed if the app is run with Docker!**
-
 ## Usage (as of the current version)
 
 1. Make sure you have all the libraries needed to run the app 
@@ -21,4 +18,4 @@ cd client
 python run.py
 ```
 
-3. Browse to 127.0.0.1:80 to see the app in action. (127.0.0.1:81 is used for the server, and it cannot be accessed)
+3. Browse to 127.0.0.1:5000 to see the app in action. The app will access the postgres database deployed on Heroku. (The default user is admin@admin.com:admin)

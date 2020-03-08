@@ -5,12 +5,6 @@ from app.users.forms import RegistrationForm
 from app.models import User
 from app.users import users
 
-# TODO: delete/initialize params with column data type values
-def create_data_table(user):
-    data = Data(author=user, input_value1=0, input_value2=0)
-    db.session.add(data)
-    db.session.commit()
-
 @users.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
