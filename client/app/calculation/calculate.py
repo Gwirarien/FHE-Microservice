@@ -25,12 +25,13 @@ def __encrypt_input_values(secret_key, key_gen, form):
     return __convert_values_to_json(enc_values)
 
 def __send_receive_data(json_enc_data):
-    result = requests.post("http://127.0.0.1:5001", json=json_enc_data)
+    result = requests.post("https://homomorphic-encryption-server.herokuapp.com/", json=json_enc_data)
     return jsonpickle.decode(result.text)
  
 @calculation.route("/calculate", methods=['GET', 'POST'])
 def calculate():
     form = CalculateForm()
+    session['values'] = 0
     if form.validate_on_submit():
 
         output_value = None
@@ -51,8 +52,7 @@ def calculate():
                 continue
 
         values = [form.input_value1.data, form.input_value2.data, output_value]
-        session['values'] = values
-        return redirect(url_for('main.home'))
+        return render_template('calculate.html', title='Calculate', form=form, values=values)
     return render_template('calculate.html', title='Calculate', form=form)
 
     

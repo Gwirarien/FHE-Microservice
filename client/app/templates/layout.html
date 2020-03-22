@@ -1,83 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
     {% if title %}
-        <title>HE Page - {{ title }}</title>
+        <title>Better Heart - {{ title }}</title>
     {% else %}
-        <title>HE Page</title>
+        <title>Better Heart</title>
     {% endif %}
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="static/images/favicon.png" type="image/png">
+        
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="static/css/LineIcons.css">
+        
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="static/css/default.css">
+    
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="static/css/style.css">
+
 </head>
 <body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+
+      <!--====== NAVBAR START ======-->
+
+    <section class="navbar-area">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">HE Page</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
-              <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              {% if current_user.is_authenticated %}
-                <a class="nav-item nav-link" href="{{ url_for('users.account') }}">Account</a>
-                <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
-              {% else %}
-                <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
-                <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                  {{ message }}
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                      
+                        <a class="navbar-brand" href="{{ url_for('main.home') }}">
+                            <img src="static/images/logo.svg" alt="Logo">
+                        </a>
+                        
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse sub-menu-bar">
+                            <ul class="navbar-nav m-auto">
+                                <li class="nav-item active"><a href="{{ url_for('main.home') }}">Home</a></li>
+                                {% if isHome and not current_user.is_authenticated %}
+                                  <li class="nav-item"><a href="#services">Services</a></li>
+                                  <li class="nav-item"><a href="#facts">Facts</a></li>
+                                {% endif %}
+                                {% if current_user.is_authenticated %}
+                                    <li class="nav-item"><a href="{{ url_for('calculation.calculate') }}">Calculate</a></li>
+                                    <li class="nav-item"><a href="#">Forum</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            <ul class="navbar-nav m-auto">
+                                {% if current_user.is_authenticated %}
+                                  <li class="nav-item"><a href="{{ url_for('users.account') }}">Account</a></li>
+                                  <li class="nav-item"><a href="{{ url_for('users.logout') }}">Logout</a></li>
+                                {% else %}
+                                  <li class="nav-item"><a href="{{ url_for('users.login') }}">Login</a></li>
+                                  <li class="nav-item"><a href="{{ url_for('users.register') }}">Register</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </nav> <!-- navbar -->
                 </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
-          {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <h3>Sidebar</h3>
-            <p class='text-muted'>Lorem ipsum
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">dolor sit amet</li>
-                <li class="list-group-item list-group-item-light">consectetur adipiscing</li>
-                <li class="list-group-item list-group-item-light">elit, sed do eiusmod</li>
-                <li class="list-group-item list-group-item-light">tempor incididunt</li>
-              </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
 
+    <!--====== NAVBAR ENDS ======-->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% block content %}{% endblock %}
+
+    <!--====== FOOTER PART START ======-->
+
+    <section class="footer-area footer-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="footer-logo text-center">
+                        <a class="mt-30" href="{{ url_for('main.home') }}"><img src="static/images/logo.svg" alt="Logo"></a>
+                    </div> <!-- footer logo -->
+                    <ul class="social text-center mt-60">
+                        <li><a href="https://facebook.com"><i class="lni lni-facebook-filled"></i></a></li>
+                        <li><a href="https://twitter.com"><i class="lni lni-twitter-original"></i></a></li>
+                        <li><a href="https://instagram.com"><i class="lni lni-instagram-original"></i></a></li>
+                        <li><a href="https://linkedin.com"><i class="lni lni-linkedin-original"></i></a></li>
+                    </ul> <!-- social -->
+                    <div class="footer-support text-center">
+                        <span class="number">+00-- --- ---</span>
+                        <span class="mail">admin@admin.com</span>
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== FOOTER PART ENDS ======-->
+
+    <!--====== Jquery js ======-->
+    <script src="static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="static/js/vendor/modernizr-3.7.1.min.js"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <!--====== Main js ======-->
+    <script src="static/js/main.js"></script>
 </body>
 </html>

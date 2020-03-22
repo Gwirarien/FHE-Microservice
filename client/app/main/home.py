@@ -9,10 +9,6 @@ import jsonpickle
 @main.route("/home")
 def home():
     if current_user.is_authenticated:
-        try:
-            values = session['values']
-            return render_template('home.html', values=values)
-        except:
-            values = None
-            
-    return render_template('home.html')
+        return render_template('home.html', isHome=True) # forum.html
+
+    return render_template('home.html', isHome=True)

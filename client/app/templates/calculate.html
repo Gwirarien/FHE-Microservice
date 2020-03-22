@@ -1,40 +1,70 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Calculate</legend>
-                <div class="form-group">
-                    {{ form.input_value1.label(class="form-control-label") }}
-                    {% if form.input_value1.errors %}
-                        {{ form.input_value1(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.input_value1.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
+
+<section class="slider_area">
+    <div class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="slider-content">
+                                <form method="POST" action="">
+                                    {{ form.hidden_tag() }}
+                                    <fieldset class="form-group">
+                                        <legend class="border-bottom mb-4">Calculate</legend>
+                                        <div class="text">
+                                            {{ form.input_value1.label(class="form-control-label") }}
+                                            {% if form.input_value1.errors %}
+                                                {{ form.input_value1(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.input_value1.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.input_value1(class="form-control form-control-lg") }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="text">
+                                            {{ form.input_value2.label(class="form-control-label") }}
+                                            {% if form.input_value2.errors %}
+                                                {{ form.input_value2(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.input_value2.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.input_value2(class="form-control form-control-lg") }}
+                                            {% endif %}
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group mt-25">
+                                        {{ form.submit_values(class="btn btn-pill btn-light") }}
+                                    </div>
+                                    <div class="text">
+                                        <ul id="output-data">
+                                            {% if values is defined %}
+                                                <li>Input1: {{ values[0] }}</li>
+                                                <li>Input2: {{ values[1] }}</li>
+                                                <li>Output: {{ values[2] }}</li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    {% else %}
-                        {{ form.input_value1(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.input_value2.label(class="form-control-label") }}
-                    {% if form.input_value2.errors %}
-                        {{ form.input_value2(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.input_value2.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.input_value2(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-            </fieldset>
-            <div class="form-group">
-                {{ form.submit_values(class="btn btn-outline-info") }}
-            </div>
-        </form>
+                    </div> <!-- row -->
+                </div> <!-- container -->
+                <div class="slider-image-box d-none d-lg-flex align-items-center">
+                    <div class="slider-image">
+                        <img src="#" alt="Hero">
+                    </div> <!-- slider-image -->
+                </div> <!-- slider-image box -->
+            </div> <!-- carousel-item -->
+        </div>
     </div>
+</section>
+
 {% endblock content %}
