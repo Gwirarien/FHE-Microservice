@@ -57,7 +57,7 @@ class EncryptionHelper:
 
     @staticmethod
     def inverse_modulo(a, m):
-        a = EncryptionHelper.signed_modulo(a, m);
+        a = EncryptionHelper.signed_modulo(a, m)
         for x in range(1, m):
             if (EncryptionHelper.signed_modulo((a*x), m) == 1):
                 return x

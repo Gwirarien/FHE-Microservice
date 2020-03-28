@@ -11,11 +11,12 @@ def process():
     received_data = jsonpickle.decode(received_data)
     
     # perform computation
-    enc_input_value1 = received_data['enc_value1']
-    enc_input_value2 = received_data['enc_value2']
+    sum_value = 0
+    for i in range(1, 5):   
+        sum_value = np.add(received_data['enc_value{}'.format(i)], sum_value)
 
     enc_output = {}
-    enc_output['enc_output_value'] = np.add(enc_input_value1, enc_input_value2)
+    enc_output['enc_output_value'] = sum_value
 
     # send back data as json
     return jsonpickle.encode(enc_output)

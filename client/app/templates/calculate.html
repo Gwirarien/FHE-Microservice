@@ -14,29 +14,63 @@
                                     <fieldset class="form-group">
                                         <legend class="border-bottom mb-4">Calculate</legend>
                                         <div class="text">
-                                            {{ form.input_value1.label(class="form-control-label") }}
-                                            {% if form.input_value1.errors %}
-                                                {{ form.input_value1(class="form-control form-control-lg is-invalid") }}
+                                            {{ form.gender.label(class="form-control-label") }}
+                                            {{ form.gender }}
+                                        </div>
+                                        <div class="text">
+                                            {{ form.age.label(class="form-control-label") }}
+                                            {% if form.age.errors %}
+                                                {{ form.age(class="form-control form-control-lg is-invalid") }}
                                                 <div class="invalid-feedback">
-                                                    {% for error in form.input_value1.errors %}
+                                                    {% for error in form.age.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
                                                 </div>
                                             {% else %}
-                                                {{ form.input_value1(class="form-control form-control-lg") }}
+                                                {{ form.age(class="form-control form-control-lg") }}
                                             {% endif %}
                                         </div>
                                         <div class="text">
-                                            {{ form.input_value2.label(class="form-control-label") }}
-                                            {% if form.input_value2.errors %}
-                                                {{ form.input_value2(class="form-control form-control-lg is-invalid") }}
+                                            {{ form.total_cholesterol.label(class="form-control-label") }}
+                                            {% if form.total_cholesterol.errors %}
+                                                {{ form.total_cholesterol(class="form-control form-control-lg is-invalid") }}
                                                 <div class="invalid-feedback">
-                                                    {% for error in form.input_value2.errors %}
+                                                    {% for error in form.total_cholesterol.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
                                                 </div>
                                             {% else %}
-                                                {{ form.input_value2(class="form-control form-control-lg") }}
+                                                {{ form.total_cholesterol(class="form-control form-control-lg") }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="text">
+                                            {{ form.smoker.label(class="form-control-label") }}
+                                            {{ form.smoker }}
+                                        </div>
+                                        <div class="text">
+                                            {{ form.hdl_cholesterol.label(class="form-control-label") }}
+                                            {% if form.hdl_cholesterol.errors %}
+                                                {{ form.hdl_cholesterol(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.hdl_cholesterol.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.hdl_cholesterol(class="form-control form-control-lg") }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="text">
+                                            {{ form.systolic_blood_pressure.label(class="form-control-label") }}
+                                            {% if form.systolic_blood_pressure.errors %}
+                                                {{ form.systolic_blood_pressure(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.systolic_blood_pressure.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.systolic_blood_pressure(class="form-control form-control-lg") }}
                                             {% endif %}
                                         </div>
                                     </fieldset>
@@ -46,9 +80,7 @@
                                     <div class="text">
                                         <ul id="output-data">
                                             {% if values is defined %}
-                                                <li>Input1: {{ values[0] }}</li>
-                                                <li>Input2: {{ values[1] }}</li>
-                                                <li>Output: {{ values[2] }}</li>
+                                                <li>10-year risk: {{ values }}%</li>
                                             {% endif %}
                                         </ul>
                                     </div>

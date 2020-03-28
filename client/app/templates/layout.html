@@ -47,7 +47,7 @@
                             <span class="toggler-icon"></span>
                         </button>
 
-                        <div class="collapse navbar-collapse sub-menu-bar">
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                             <ul class="navbar-nav m-auto">
                                 <li class="nav-item active"><a href="{{ url_for('main.home') }}">Home</a></li>
                                 {% if isHome and not current_user.is_authenticated %}
@@ -59,9 +59,7 @@
                                     <li class="nav-item"><a href="#">Forum</a></li>
                                 {% endif %}
                             </ul>
-                        </div>
-                        
-                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                            
                             <ul class="navbar-nav m-auto">
                                 {% if current_user.is_authenticated %}
                                   <li class="nav-item"><a href="{{ url_for('users.account') }}">Account</a></li>
