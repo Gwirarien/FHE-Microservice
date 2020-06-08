@@ -1,0 +1,123 @@
+.user-content-item {
+    background-color: #6679b4;
+    position: relative;
+}
+
+.user-content-item::before {
+    position: absolute;
+    content: '';
+    width: 33%;
+    height: 100%;
+    background: -webkit-linear-gradient(rgba(0, 103, 244, 0.3) 0%, rgba(43, 219, 220, 0.3) 100%);
+    background: -o-linear-gradient(rgba(0, 103, 244, 0.3) 0%, rgba(43, 219, 220, 0.3) 100%);
+    background: linear-gradient(rgba(0, 103, 244, 0.3) 0%, rgba(43, 219, 220, 0.3) 100%);
+    top: 0;
+    right: 15%;
+    -webkit-transform: skewX(20deg);
+    -moz-transform: skewX(20deg);
+    -ms-transform: skewX(20deg);
+    -o-transform: skewX(20deg);
+    transform: skewX(20deg);
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .user-content-item::before {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .user-content-item::before {
+        width: 60%;
+    }
+}
+
+@media (max-width: 767px) {
+    .user-content-item::before {
+        width: 50%;
+        right: 45%;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .user-content-item::before {
+        right: 25%;
+    }
+}
+
+.user-content-item .user-image-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 9;
+}
+
+.user-content-item .user-image-box .user-image {
+    max-width: 681px;
+    width: 100%;
+}
+
+.area-user-content {
+    position: relative;
+    z-index: 9;
+    padding-top: 239px;
+    padding-bottom: 199px;
+}
+
+@media (max-width: 769px) {
+    .area-user-content {
+        padding-top: 191px;
+        padding-bottom: 151px;
+    }
+}
+
+.area-user-content .title {
+    font-size: 87px;
+    line-height: 95px;
+    color: #fff;
+    font-weight: 699;
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    .area-user-content .title {
+        font-size: 59px;
+        line-height: 79px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .area-user-content .title {
+        font-size: 73px;
+        line-height: 91px;
+    }
+}
+
+@media (max-width: 768px) {
+    .area-user-content .title {
+        font-size: 35px;
+        line-height: 44px;
+    }
+}
+
+.area-user-content .text {
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 16px;
+}
+
+.area-user-content .text-info-short {
+    color: rgb(168, 165, 165);
+    font-size: 12px;
+    line-height: 24px;
+    margin-top: 16px;
+}
+
+.area-user-content .text-info-link {
+    color: rgb(234, 255, 140);
+    font-size: 12px;
+    line-height: 24px;
+    margin-top: 16px;
+}

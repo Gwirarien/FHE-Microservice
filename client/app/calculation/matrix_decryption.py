@@ -1,5 +1,4 @@
 import numpy as np
-import random
 from app.calculation.encryption_helper import EncryptionHelper
 
 class MatrixDecryption:

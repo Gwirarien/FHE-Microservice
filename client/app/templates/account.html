@@ -1,77 +1,79 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} 
 {% block content %}
 
-<section class="slider_area">
-    <div class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider-content">
-                                <div class="media">
-                                    <img class="rounded-circle account-img" src="{{ image_file }}">
-                                    <div class="media-body">
-                                        <h2 class="account-heading white">{{ current_user.username }}</h2>
-                                        <p class="text">{{ current_user.email }}</p>
-                                    </div>
-                                </div>
-                                <form method="POST" action="" enctype="multipart/form-data">
-                                    {{ form.hidden_tag() }}
-                                    <fieldset class="form-group">
-                                        <legend class="border-bottom mb-4 white">Account Info</legend>
-                                        <div class="text">
-                                            {{ form.username.label(class="form-control-label") }}
-                                            {% if form.username.errors %}
-                                                {{ form.username(class="form-control form-control-lg is-invalid") }}
-                                                <div class="invalid-feedback">
-                                                    {% for error in form.username.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                </div>
-                                            {% else %}
-                                                {{ form.username(class="form-control form-control-lg") }}
-                                            {% endif %}
-                                        </div>
-                                        <div class="text">
-                                            {{ form.email.label(class="form-control-label") }}
-                                            {% if form.email.errors %}
-                                                {{ form.email(class="form-control form-control-lg is-invalid") }}
-                                                <div class="invalid-feedback">
-                                                    {% for error in form.email.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                </div>
-                                            {% else %}
-                                                {{ form.email(class="form-control form-control-lg") }}
-                                            {% endif %}
-                                        </div>
-                                        <div class="mt-25 black">
-                                            {{ form.picture.label() }}
-                                            {{ form.picture(class="form-control-file") }}
-                                            {% if form.picture.errors %}
-                                                {% for error in form.picture.errors %}
-                                                    <span class="text-danger">{{ error }}</span></br>
-                                                {% endfor %}
-                                            {% endif %}
-                                        </div>
-                                    </fieldset>
-                                    <div class="form-group mt-25">
-                                        {{ form.submit(class="btn btn-pill btn-light") }}
-                                    </div>
-                                </form>
+<div class="user-content-item">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 area-user-content">
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                
+                <div class="media">
+                    <img class="rounded-circle account-img" src="{{ image_file }}">
+                    <div class="media-body">
+                        <h2 class="account-heading white">{{ current_user.username }}</h2>
+                        <p class="text">{{ current_user.email }}</p>
+                    </div>
+                </div>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4 white">Your account information</legend>
+                        <div class="text">
+                            {{ form.username.label(class="form-control-label") }}
+                            {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                <span>{{ error }}</span> {% endfor %}
+                            </div>
+                            {% else %} {{ form.username(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="text">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                <span>{{ error }}</span> {% endfor %}
+                            </div>
+                            {% else %} {{ form.email(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="text">
+                            {{ form.picture.label() }}
+                            <div class="custom-file">
+                                {{ form.picture(class="custom-file-input") }}
+                                <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                {% if form.picture.errors %} 
+                                {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                                {% endfor %} {% endif %}
                             </div>
                         </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
-                <div class="slider-image-box d-none d-lg-flex align-items-center">
-                    <div class="slider-image">
-                        <img src="static/images/account.png" alt="Hero">
-                    </div> <!-- slider-image -->
-                </div> <!-- slider-image box -->
-            </div> <!-- carousel-item -->
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-pill btn-dark") }}
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
-</section>
+    <div class="user-image-box d-none d-lg-flex align-items-center">
+        <div class="user-image">
+            <img src="{{ url_for('static', filename='images/account.png') }}">
+        </div>
+    </div>
+</div>
 
 {% endblock content %}

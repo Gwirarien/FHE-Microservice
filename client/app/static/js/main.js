@@ -12,7 +12,7 @@ $(function() {
         });
     });
     
-    //===== close navbar-collapse when a  clicked
+    // navbar-collapse
 
     $(".navbar-nav a").on('click', function () {
         $(".navbar-collapse").removeClass("show");
@@ -26,8 +26,7 @@ $(function() {
         $(".navbar-toggler").removeClass('active');
     });
     
-    
-    //===== Sidebar
+    // sidebar 
 
     $('[href="#side-menu-left"], .overlay-left').on('click', function (event) {
         $('.sidebar-left, .overlay-left').addClass('open');
@@ -36,6 +35,4 @@ $(function() {
     $('[href="#close"], .overlay-left').on('click', function (event) {
         $('.sidebar-left, .overlay-left').removeClass('open');
     });
-
-    //===== 
 });

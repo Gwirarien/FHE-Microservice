@@ -1,4 +1,4 @@
-from app.calculation.forms import CalculateForm
+from app.calculation.calculator_forms import CalculateForm
 from enum import Enum
 
 class Gender(Enum):
@@ -139,9 +139,9 @@ class Framingham:
     
     def convert_score_to_risk(self, form, score):
         if form.gender.data == 'male':
-            if 9 <= score <= 13:
+            if 0 <= score <= 13:
                 return 1
-            if 13 <= score <= 15:
+            if 14 <= score <= 15:
                 return 2
             if score == 16:
                 return 3
@@ -166,7 +166,7 @@ class Framingham:
             if score > 26:
                 return 30
         else:
-            if 9 <= score <= 21:
+            if 0 <= score <= 21:
                 return 1
             if 22 <= score <= 23:
                 return 2

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}" />
+</head>
+
+<body>
+    <div id="not-found">
+        <div class="not-found">
+
+            {% block content %}{% endblock %}
+            
+        </div>
+    </div>
+</body>
+
+</html>

@@ -4,3 +4,4 @@ main = Blueprint('main', __name__)
 
 from app.main import home
 from app.main import about_privacy
+from app.main import forum

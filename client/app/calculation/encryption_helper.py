@@ -1,4 +1,5 @@
 import numpy as np
+import threading
 import random
 from math import sqrt
 from itertools import count, islice
@@ -74,16 +75,37 @@ class EncryptionHelper:
         return np.delete(np.delete(matrix, i, axis=0), j, axis=1)
 
     @staticmethod
-    def compute_modular_inverse(matrix, mod_value):
+    def find_adjoin(matrix, mod_value, i, j, res):
+        sign = (-1) ** (i + j)
+        minor = EncryptionHelper.matrix_minor(matrix, j, i)
+        res.append((sign * int(round(np.linalg.det(minor)))) % mod_value)
+        return
+
+    @staticmethod
+    def compute_modular_inverse(matrix, mod_value, res_matrix):
         size = len(matrix)
-        adj = np.zeros(shape=(size, size))
         determinant = int(round(np.linalg.det(matrix)))
+        adj = []
         for i in range(0, size):
-            for j in range(0, size):
-                sign = (-1)**(i+j)
-                minor = EncryptionHelper.matrix_minor(matrix, j, i)
-                adj[i][j] = (sign*int(round(np.linalg.det(minor))))%mod_value
-        return np.matrix((EncryptionHelper.inverse_modulo(determinant, mod_value) * adj)%mod_value,dtype='longlong')
+
+            res = []
+            processes = [
+                threading.Thread(target=EncryptionHelper.find_adjoin, args=(matrix, mod_value, i, j, res))
+                for j
+                in range(size)]
+
+            for t in processes:
+                t.start()
+
+            for t in processes:
+                t.join()
+
+            for val in res:
+                adj.append(val)
+
+        adj = np.asarray(adj)
+        res_matrix.append(np.matrix((EncryptionHelper.inverse_modulo(determinant, mod_value) * adj)%mod_value,dtype='longlong').reshape(size, size))
+        return
 
     @staticmethod
     def has_modular_inverse(matrix, mod_value):
@@ -97,9 +119,10 @@ class EncryptionHelper:
     @staticmethod
     def create_modular_inverse_matrix(mod_value):
         while True:
-            matrix = EncryptionHelper.generate_random_square_matrix(mod_value)
+            matrix = []
+            EncryptionHelper.generate_random_square_matrix(mod_value, matrix)
             try:
-                if(EncryptionHelper.has_modular_inverse(matrix, mod_value)):
+                if(EncryptionHelper.has_modular_inverse(matrix[0], mod_value)):
                     return matrix
             except:
                 pass
@@ -119,9 +142,10 @@ class EncryptionHelper:
         return np.reshape(np.matrix(mod_matrix), (4, 4))
 
     @staticmethod
-    def generate_random_square_matrix(mod_value):
+    def generate_random_square_matrix(mod_value, res_matrix):
         matrix = (np.random.rand(2,2)*1000).astype('longlong')
-        return matrix % mod_value
+        res_matrix.append(matrix % mod_value)
+        return
 
     @staticmethod
     def create_quaternion(sigma, mod_value):

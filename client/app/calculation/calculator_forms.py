@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, NumberRange
 
 class CalculateForm(FlaskForm):
     gender = SelectField('Gender', choices=[('male', 'Male'), ('female', 'Female')])
-    age = IntegerField('Age', validators=[NumberRange(min=20, message='Age must be bigger than 20!'), DataRequired()])
+    age = IntegerField('Age', validators=[NumberRange(min=20, max=79, message='Age must be bigger than 20 and less than 80!'), DataRequired()])
     total_cholesterol = FloatField('Total cholesterol (mg/dL)', validators=[NumberRange(min=50, max=350, message='Value not allowed'), DataRequired()])
     smoker = SelectField('Smoker', choices=[('no', 'No'), ('yes', 'Yes')])
     hdl_cholesterol = FloatField('HDL cholesterol (mg/dL)', validators=[NumberRange(min=0, max=100, message='Value not allowed'), DataRequired()])

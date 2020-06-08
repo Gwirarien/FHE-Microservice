@@ -1,7 +1,7 @@
-from app import db, bcrypt
-from flask import render_template, url_for, flash, redirect, request
+from app import database, bcrypt
+from flask import render_template, url_for, flash, redirect
 from flask_login import current_user, login_user
-from app.users.forms import LoginForm
+from app.users.user_forms import LoginForm
 from app.models import User
 from app.users import users
 
@@ -9,13 +9,12 @@ from app.users import users
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('main.home'))
+    login_form = LoginForm()
+    if login_form.validate_on_submit():
+        user = User.query.filter_by(email=login_form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, login_form.password.data):
+            login_user(user)
+            return redirect(url_for('main.home'))
         else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+            flash('Login failed. Please check your input data', 'danger')
+    return render_template('login.html', title='Login', form=login_form)

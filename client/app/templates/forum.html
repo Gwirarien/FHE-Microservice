@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="forum-content-item">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 area-forum-content">
+
+				{% with messages = get_flashed_messages(with_categories=true) %}
+				{% if messages %}
+					{% for category, message in messages %}
+					<div class="alert alert-{{ category }}">
+						{{ message }}
+					</div>
+					{% endfor %}
+				{% endif %}
+				{% endwith %}
+
+				<h1 class="mt-4">BetterHeart.me 
+					<small>forum</small>
+				</h1>
+				{% if posts.items %}
+					{% for post in posts.items %}
+					<article class="media article-content-section">
+						<img class="rounded-circle article-img"
+							src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+						<div class="media-body">
+							<div class="article-metadata">
+								<small class="text-muted">Posted on
+									{{ post.date_posted.strftime('%d-%m-%Y') }} by </small>
+								<a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+							</div>
+							<h2 class="article-title"><a
+									href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a>
+							</h2>
+							<p class="card-text">{{ post.content }}</p>
+						</div>
+					</article>
+					{% endfor %}
+
+					<!-- Pagination -->
+					<ul class="pagination justify-content-center mb-4">
+						{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+						{% if page_num %}
+						{% if posts.page == page_num %}
+						<a class="btn btn-info mb-4"
+							href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+						{% else %}
+						<a class="btn btn-outline-info mb-4"
+							href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+						{% endif %}
+						{% else %}
+						...
+						{% endif %}
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+
+			<!-- Sidebar widgets Column -->
+			<div class="col-md-4 area-forum-content">
+
+				<!-- Search widget -->
+				<div class="card mt-4">
+					<h5 class="card-header">Search</h5>
+					<div class="card-body">
+						<div class="input-group">
+							<form method="get" action="http://google.com/search">
+								<input type="text" name="q" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+									<input type="submit" name="sa" class="btn btn-pill btn-dark mt-10"></input>
+								</span>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Categories widget -->
+				<div class="card mt-4">
+					<h5 class="card-header">Categories</h5>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-6">
+								<ul class="list-unstyled mb-0">
+									<li>
+										<a href="#">Heart</a>
+									</li>
+									<li>
+										<a href="#">Diabetes</a>
+									</li>
+									<li>
+										<a href="#">Obesity</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-lg-6">
+								<ul class="list-unstyled mb-0">
+									<li>
+										<a href="#">Smoking</a>
+									</li>
+									<li>
+										<a href="#">Blood pressure</a>
+									</li>
+									<li>
+										<a href="#">General</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Side Widget -->
+				<div class="card mt-4">
+					<h5 class="card-header">Forum guidelines</h5>
+					<div class="card-body">
+						The topics discussed here are only to share the newest medical
+						advancements, any post that does not respect this will be removed.
+						Please consult a medical specialist before trying 
+						the possible advices posted.
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

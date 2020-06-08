@@ -1,14 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!--====== SLIDER PART START ======-->
-
 <section id="home" class="slider_area">
-    <div id="carouselThree" class="carousel slide" data-ride="carousel">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselThree" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselThree" data-slide-to="1"></li>
-            <li data-target="#carouselThree" data-slide-to="2"></li>
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
         </ol>
 
         <div class="carousel-inner">
@@ -17,22 +15,25 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="slider-content">
-                                <h1 class="title">Check Your Heart Now</h1>
-                                <p class="text">We use the Framingham cardiovascular risk formula to determine the health of your heart.</p>
+                                <h1 class="title">Check Your Heart</h1>
+                                <p class="text">We use the Framingham cardiovascular risk formula to determine the
+                                    health of your heart.</p>
                                 <ul class="slider-btn rounded-buttons">
-                                    <li><a class="main-btn rounded-one" href="{{ url_for('users.register') }}">REGISTER</a></li>
-                                    <li><a class="main-btn rounded-two" href="{{ url_for('calculation.calculate') }}">CALCULATE RISK</a></li>
+                                    <li><a class="main-btn rounded-white"
+                                            href="{{ url_for('users.register') }}">REGISTER</a></li>
+                                    <li><a class="main-btn rounded-blue"
+                                            href="{{ url_for('calculation.calculate') }}">CALCULATE RISK</a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
+                    </div> 
+                </div>
                 <div class="slider-image-box d-none d-lg-flex align-items-center">
                     <div class="slider-image">
-                        <img src="static/images/slider/1.png" alt="Hero">
-                    </div> <!-- slider-image -->
-                </div> <!-- slider-image box -->
-            </div> <!-- carousel-item -->
+                        <img src="{{ url_for('static', filename='images/slider/1.png') }}" alt="Hero">
+                    </div>
+                </div>
+            </div>
 
             <div class="carousel-item">
                 <div class="container">
@@ -42,19 +43,21 @@
                                 <h1 class="title">Fully Anonymous</h1>
                                 <p class="text">We value your privacy and all your data can be accessed just by you.</p>
                                 <ul class="slider-btn rounded-buttons">
-                                    <li><a class="main-btn rounded-one" href="{{ url_for('users.register') }}">REGISTER</a></li>
-                                    <li><a class="main-btn rounded-two" href="{{ url_for('calculation.calculate') }}">CALCULATE RISK</a></li>
+                                    <li><a class="main-btn rounded-white"
+                                            href="{{ url_for('users.register') }}">REGISTER</a></li>
+                                    <li><a class="main-btn rounded-blue"
+                                            href="{{ url_for('calculation.calculate') }}">CALCULATE RISK</a></li>
                                 </ul>
-                            </div> <!-- slider-content -->
+                            </div>
                         </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
+                    </div>
+                </div>
                 <div class="slider-image-box d-none d-lg-flex align-items-center">
                     <div class="slider-image">
-                        <img src="static/images/slider/2.png" alt="Hero">
-                    </div> <!-- slider-image -->
-                </div> <!-- slider-image box -->
-            </div> <!-- carousel-item -->
+                        <img src="{{ url_for('static', filename='images/slider/2.png') }}" alt="Hero">
+                    </div>
+                </div>
+            </div>
 
             <div class="carousel-item">
                 <div class="container">
@@ -62,35 +65,34 @@
                         <div class="col-lg-6">
                             <div class="slider-content">
                                 <h1 class="title">Talk About Health</h1>
-                                <p class="text">Sign up now to access our forum in which you can post medical news and stories</p>
+                                <p class="text">Sign up now to access our forum in which you can post medical news and
+                                    stories</p>
                                 <ul class="slider-btn rounded-buttons">
-                                    <li><a class="main-btn rounded-one" href="{{ url_for('users.register') }}">REGISTER</a></li>
-                                    <li><a class="main-btn rounded-two" href="{{ url_for('users.login') }}">SIGN IN</a></li>
+                                    <li><a class="main-btn rounded-white"
+                                            href="{{ url_for('users.register') }}">REGISTER</a></li>
+                                    <li><a class="main-btn rounded-blue" href="{{ url_for('users.login') }}">SIGN IN</a>
+                                    </li>
                                 </ul>
-                            </div> <!-- slider-content -->
+                            </div>
                         </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
+                    </div>
+                </div>
                 <div class="slider-image-box d-none d-lg-flex align-items-center">
                     <div class="slider-image">
-                        <img src="static/images/slider/3.png" alt="Hero">
-                    </div> <!-- slider-image -->
-                </div> <!-- slider-image box -->
-            </div> <!-- carousel-item -->
+                        <img src="{{ url_for('static', filename='images/slider/3.png') }}" alt="Hero">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <a class="carousel-control-prev" href="#carouselThree" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <i class="lni lni-arrow-left"></i>
         </a>
-        <a class="carousel-control-next" href="#carouselThree" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
             <i class="lni lni-arrow-right"></i>
         </a>
     </div>
 </section>
-
-<!--====== SLIDER PART ENDS ======-->
-
-<!--====== FEATURES TWO PART START ======-->
 
 <section id="services" class="features-area">
     <div class="container">
@@ -99,24 +101,26 @@
                 <div class="section-title text-center pb-10">
                     <h3 class="title">Our Services</h3>
                     <p class="text"></p>
-                </div> <!-- row -->
+                </div>
             </div>
-        </div> <!-- row -->
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="single-features mt-40">
                     <div class="features-title-icon d-flex justify-content-between">
-                        <h4 class="features-title"><a href="{{ url_for('calculation.calculate') }}">Heart Check-Up</a></h4>
+                        <h4 class="features-title"><a href="{{ url_for('calculation.calculate') }}">Heart Check-Up</a>
+                        </h4>
                         <div class="features-icon">
                             <i class="lni lni-clipboard"></i>
-                            <img class="shape" src="static/images/f-shape-1.svg" alt="Shape">
+                            <img class="shape" src="{{ url_for('static', filename='images/f-shape-1.svg') }}" alt="Shape">
                         </div>
                     </div>
                     <div class="features-content">
-                        <p class="text">We ask you to input specific medical data and we will calculate your heart health.</p>
+                        <p class="text">We ask you to input specific medical data and we will calculate your heart
+                            health.</p>
                         <a class="features-btn" href="{{ url_for('calculation.calculate') }}">LEARN MORE</a>
                     </div>
-                </div> <!-- single features -->
+                </div>
             </div>
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="single-features mt-40">
@@ -124,18 +128,14 @@
                         <h4 class="features-title"><a href="#">Health Forum</a></h4>
                         <div class="features-icon">
                             <i class="lni lni-user"></i>
-                            <img class="shape" src="static/images/f-shape-1.svg" alt="Shape">
+                            <img class="shape" src="{{ url_for('static', filename='images/f-shape-1.svg') }}" alt="Shape">
                         </div>
                     </div>
                     <div class="features-content">
                         <p class="text">Find and post the latest health news and recommendations.</p>
-                        {% if current_user.is_authenticated %}
-                            <a class="features-btn" href="#forum">LEARN MORE</a> <!-- TODO: update forum link -->
-                        {% else %}
-                            <a class="features-btn" href="{{ url_for('users.register') }}">LEARN MORE</a>
-                        {% endif %}
+                        <a class="features-btn" href="{{ url_for('users.register') }}">LEARN MORE</a>
                     </div>
-                </div> <!-- single features -->
+                </div>
             </div>
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="single-features mt-40">
@@ -143,98 +143,113 @@
                         <h4 class="features-title"><a href="#">Respect Privacy</a></h4>
                         <div class="features-icon">
                             <i class="lni lni-eye"></i>
-                            <img class="shape" src="static/images/f-shape-1.svg" alt="Shape">
+                            <img class="shape" src="{{ url_for('static', filename='images/f-shape-1.svg') }}" alt="Shape">
                         </div>
                     </div>
                     <div class="features-content">
                         <p class="text">We do not collect nor use your data. It only belongs to you.</p>
                         <a class="features-btn" href="{{ url_for('main.about_privacy') }}">LEARN MORE</a>
                     </div>
-                </div> <!-- single features -->
+                </div>
             </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
+        </div>
+    </div>
 </section>
-
-<!--====== FEATURES TWO PART ENDS ======-->
-
-<!--====== FACTS PART START ======-->
 
 <section id="facts" class="facts-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <div class="faq-content mt-45">
+                <div class="faq-content mt-40">
                     <div class="facts-title">
                         <h6 class="sub-title">Did You Know?</h6>
                         <h4 class="title">Hearth Disease Facts <br> You Should Know</h4>
-                    </div> <!-- Did you know title -->
+                    </div>
                     <div class="facts-accordion">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                 <div class="card-header" id="headingOne">
-                                    <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Heart attack fact #1</a>
+                                    <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">Heart attack fact #1</a>
                                 </div>
 
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <p class="text">Heart attacks occur when oxygen-rich blood is blocked and can’t flow to the heart. The section of the heart devoid of oxygen begins to die if the flow isn’t restored in a sufficient amount of time.</p>
+                                        <p class="text">Heart attacks occur when oxygen-rich blood is blocked and can’t
+                                            flow to the heart. The section of the heart devoid of oxygen begins to die
+                                            if the flow isn’t restored in a sufficient amount of time.</p>
                                     </div>
-                                </div> 
-                            </div> <!-- card -->
+                                </div>
+                            </div>
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
-                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Heart attack fact #2</a>
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">Heart attack fact #2</a>
                                 </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <p class="text">A person who is about to have a heart attack may exhibit these symptoms: pain or discomfort (in chest, arms, shoulder, elbows, jaw, or back), shortness of breath, and nausea or vomiting.</p>
+                                        <p class="text">A person who is about to have a heart attack may exhibit these
+                                            symptoms: pain or discomfort (in chest, arms, shoulder, elbows, jaw, or
+                                            back), shortness of breath, and nausea or vomiting.</p>
                                     </div>
                                 </div>
-                            </div> <!-- card -->
+                            </div>
                             <div class="card">
                                 <div class="card-header" id="headingThree">
-                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Heart disease fact #1</a>
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseThree">Heart disease fact #1</a>
                                 </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <p class="text">Heart disease is an umbrella term that includes conditions such as coronary artery disease, heart attack, cardiac arrest, congestive heart failure, and congenital heart diseases.</p>
+                                        <p class="text">Heart disease is an umbrella term that includes conditions such
+                                            as coronary artery disease, heart attack, cardiac arrest, congestive heart
+                                            failure, and congenital heart diseases.</p>
                                     </div>
                                 </div>
-                            </div> <!-- card -->
+                            </div> 
                             <div class="card">
-                                <div class="card-header" id="headingFore">
-                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFore" aria-expanded="false" aria-controls="collapseFore">Heart disease fact #2</a>
+                                <div class="card-header" id="headingFour">
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFore"
+                                        aria-expanded="false" aria-controls="collapseFore">Heart disease fact #2</a>
                                 </div>
-                                <div id="collapseFore" class="collapse" aria-labelledby="headingFore" data-parent="#accordionExample">
+                                <div id="collapseFore" class="collapse" aria-labelledby="headingFour"
+                                    data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <p class="text">A person with both a first-degree relative (a parent or sibling) and a second-degree relative (uncle or grandparent) who suffer from heart disease before the age of 60 is nearly 10 times more likely to suffer from heart disease early in life.</p>
+                                        <p class="text">A person with both a first-degree relative (a parent or sibling)
+                                            and a second-degree relative (uncle or grandparent) who suffer from heart
+                                            disease before the age of 60 is nearly 10 times more likely to suffer from
+                                            heart disease early in life.</p>
                                     </div>
                                 </div>
-                            </div> <!-- card -->
+                            </div>
                             <div class="card">
                                 <div class="card-header" id="headingFive">
-                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Heart health fact</a>
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFive"
+                                        aria-expanded="false" aria-controls="collapseFive">Heart health fact</a>
                                 </div>
-                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                    data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <p class="text">On average, not smoking, maintaining a healthy weight, and controlling blood sugar, blood pressure and cholesterol can add 10 years to a person’s lifespan.</p>
+                                        <p class="text">On average, not smoking, maintaining a healthy weight, and
+                                            controlling blood sugar, blood pressure and cholesterol can add 10 years to
+                                            a person’s lifespan.</p>
                                     </div>
                                 </div>
-                            </div> <!-- card -->
+                            </div>
                         </div>
-                    </div> <!-- Did you know accordion -->
-                </div> <!-- Did you know content -->
+                    </div>
+                </div>
             </div>
             <div class="col-lg-7">
                 <div class="facts-image mt-50">
-                    <img src="static/images/facts.png" alt="facts">
-                </div> <!-- Did you know image -->
+                    <img src="{{ url_for('static', filename='images/facts.png') }}" alt="facts">
+                </div>
             </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
+        </div>
+    </div>
 </section>
-
-<!--====== FACTS PART ENDS ======-->
 
 {% endblock content %}

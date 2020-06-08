@@ -1,0 +1,109 @@
+.calculation-content-item {
+    background-color: #86cac7;
+    position: relative;
+}
+
+.calculation-content-item::before {
+    position: absolute;
+    content: '';
+    width: 33%;
+    height: 100%;
+    background: -webkit-linear-gradient(rgba(145, 191, 255, 0.89) 0%, rgb(213, 249, 252) 100%);
+    background: -o-linear-gradient(rgba(145, 191, 255, 0.89) 0%, rgb(213, 249, 252) 100%);
+    background: linear-gradient(rgba(145, 191, 255, 0.89) 0%, rgb(213, 249, 252) 100%);
+    top: 0;
+    right: 15%;
+    -webkit-transform: skewX(20deg);
+    -moz-transform: skewX(20deg);
+    -ms-transform: skewX(20deg);
+    -o-transform: skewX(20deg);
+    transform: skewX(20deg);
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .calculation-content-item::before {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .calculation-content-item::before {
+        width: 60%;
+    }
+}
+
+@media (max-width: 767px) {
+    .calculation-content-item::before {
+        width: 50%;
+        right: 45%;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .calculation-content-item::before {
+        right: 25%;
+    }
+}
+
+.calculation-content-item .calculation-image-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 9;
+}
+
+.calculation-content-item .calculation-image-box .calculation-image {
+    max-width: 681px;
+    width: 100%;
+}
+
+.area-calculation-content {
+    position: relative;
+    z-index: 9;
+    padding-top: 239px;
+    padding-bottom: 199px;
+}
+
+@media (max-width: 769px) {
+    .area-calculation-content {
+        padding-top: 191px;
+        padding-bottom: 151px;
+    }
+}
+
+.area-calculation-content .title {
+    font-size: 87px;
+    line-height: 95px;
+    color: #fff;
+    font-weight: 699;
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    .area-calculation-content .title {
+        font-size: 59px;
+        line-height: 79px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .area-calculation-content .title {
+        font-size: 73px;
+        line-height: 91px;
+    }
+}
+
+@media (max-width: 768px) {
+    .area-calculation-content .title {
+        font-size: 35px;
+        line-height: 44px;
+    }
+}
+
+.area-calculation-content .text-black {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 16px;
+}

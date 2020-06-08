@@ -1,13 +1,11 @@
-from app import db
-from flask import render_template, redirect, url_for, session, request
-from app.calculation.forms import CalculateForm
-from flask_login import login_required, current_user
+from app import database
+from flask import render_template
+from app.calculation import calculation
+from app.calculation.calculator_forms import CalculateForm
 from app.calculation.key_generator import KeyGenerator
 from app.calculation.matrix_encryption import MatrixEncryption
 from app.calculation.matrix_decryption import MatrixDecryption
-from app.calculation import calculation
 from app.calculation.framingham import Framingham
-import numpy as np
 import jsonpickle
 import requests
 
@@ -37,8 +35,8 @@ def calculate():
         # map score accordingly to the Framingham formula
         score = Framingham().convert_values_to_score(form)
 
-        output_value = None
-        while output_value == None: 
+        output_value = None        
+        while output_value == None:
             # encrypt and send to server
             key_gen = KeyGenerator()
             secret_key = key_gen.generate_secret_key()
@@ -48,9 +46,8 @@ def calculate():
 
             # decrypt 
             output_value = MatrixDecryption().decrypt_message(secret_key, enc_output_value, True)
-
         risk = Framingham().convert_score_to_risk(form, output_value)
-        return render_template('calculate.html', title='Calculate', form=form, values=risk)
+        return render_template('calculate.html', title='Calculate', form=form, risk=risk)
     return render_template('calculate.html', title='Calculate', form=form)
 
     

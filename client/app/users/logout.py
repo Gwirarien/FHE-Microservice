@@ -6,4 +6,5 @@ from app.users import users
 def logout():
     logout_user()
     session.pop('values', None)
+    session.permanent = False
     return redirect(url_for('main.home'))
